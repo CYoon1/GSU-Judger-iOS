@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RegisterUserView: View {
+struct UserAddView: View {
     @State var username: String = ""
     @State var email: String = ""
     @State var password: String = ""
@@ -53,6 +53,6 @@ struct RegisterUserView: View {
 
 #Preview {
     NavigationStack {
-        RegisterUserView()
+        UserAddView()
     }
 }

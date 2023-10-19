@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var showLogin : Bool = false
+    @State var showLogin : Bool = true
     
     var body: some View {
         NavigationStack {
@@ -16,7 +16,7 @@ struct ContentView: View {
                 if showLogin {
                     LoginView()
                 } else {
-                    ProjectListView()
+                    EventListView()
                 }
             }
             .toolbar {

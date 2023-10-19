@@ -17,16 +17,18 @@ struct ProjectListView: View {
         }
         .navigationTitle("Projects")
         .toolbar(content: {
-            ToolbarItem(placement: .topBarLeading) {
+            ToolbarItem(placement: .topBarTrailing) {
+                NavigationLink(destination: ProjectAddView()) {
+                    Label("Open ProjectAddView()", systemImage: "plus")
+                }
+            }
+            
+            // Temp Button
+            ToolbarItem(placement: .bottomBar) {
                 Button {
                     print("Log Out")
                 } label: {
                     Text("Log Out")
-                }
-            }
-            ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink(destination: ProjectAddView()) {
-                    Label("Open ProjectAddView()", systemImage: "plus")
                 }
             }
         })

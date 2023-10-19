@@ -38,7 +38,7 @@ struct LoginView: View {
             }
             Section {
                 NavigationLink {
-                    RegisterUserView()
+                    UserAddView()
                 } label: {
                     Text("Create New User")
                 }
