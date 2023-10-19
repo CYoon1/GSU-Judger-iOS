@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showLogin : Bool = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            Group{
+                if showLogin {
+                    LoginView()
+                } else {
+                    ProjectListView()
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    Button {
+                        showLogin.toggle()
+                    } label: {
+                        if showLogin {
+                            Text("Debug Hide Login")
+                        } else {
+                            Text("Debug Show Login")
+                        }
+                    }
+                }
+            }
+            
         }
-        .padding()
     }
 }
 
