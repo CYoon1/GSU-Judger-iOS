@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct EventListView: View {
+    @State var events : [Event] = [
+        Event(eventName: "Event 1", location: "Atlanta", eventDate: Date()),
+        Event(eventName: "Event 2", location: "Atlanta", eventDate: Date()),
+        Event(eventName: "Event 3", location: "Atlanta", eventDate: Date()),
+    ]
     var body: some View {
-        List {
-            NavigationLink(destination: ProjectListView()) {
-                Text("EventListView")
-            }
-            
+        List(events) { event in
+            EventRowView(event: event)
         }
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {
@@ -37,7 +39,21 @@ struct EventListView: View {
 #Preview {
     NavigationStack {
         EventListView()
-        //        EventAddView()
+    }
+}
+struct Event: Identifiable {
+    let id = UUID()
+    let eventName: String
+    let location: String
+    let eventDate: Date
+}
+
+struct EventRowView: View {
+    let event: Event
+    var body: some View {
+        NavigationLink(destination: ProjectListView()) {
+            Text("\(event.eventName)")
+        }
     }
 }
 
@@ -63,7 +79,7 @@ struct EventAddView: View {
                 HStack {
                     Text("Location")
                     TextField(text: $eventName) {
-                        Text("Enter event here")
+                        Text("Enter event name here")
                     }
                 }
                 DatePicker("Event Date", selection: $eventDate, in: Date.now..., displayedComponents: .date)
