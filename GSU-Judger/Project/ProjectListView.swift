@@ -38,13 +38,8 @@ struct ProjectListView: View {
 
 #Preview {
     NavigationStack {
-        ProjectListView()
-    }
-}
-
-struct ProjectAddView: View {
-    var body: some View {
-        Text("ProjectAddView()")
+//        ProjectListView()
+        ProjectAddView()
     }
 }
 
@@ -53,3 +48,42 @@ struct ProjectRowView: View {
         Text("Test")
     }
 }
+
+struct ProjectAddView: View {
+    @Environment(\.presentationMode) var presentation
+    
+    @State var projectName: String = ""
+    @State var description: String = ""
+    
+    var body: some View {
+        Form {
+            Section {
+                HStack {
+                    ZStack {
+                        Text("Name")
+                    }
+                    TextField(text: $projectName) {
+                        Text("Enter project name here")
+                    }
+                }
+                
+                HStack {
+                    TextField("Enter project description", text: $description,  axis: .vertical)
+                        .lineLimit(5...10)
+                }
+            }
+            
+            Section {
+                Button {
+                    print("Create new project")
+                    presentation.wrappedValue.dismiss()
+                } label: {
+                    Text("Create Project")
+                }
+
+            }
+        }
+        .navigationTitle("Create new project")
+    }
+}
+
