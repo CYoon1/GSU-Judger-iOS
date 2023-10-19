@@ -21,6 +21,9 @@ struct EventListView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink(destination: EventAddView()) {
+                        Label("Open EventAddView()", systemImage: "plus")
+                    }
                     Button("Add Event", systemImage: "plus") {
                         print("Go to AddEvent")
                     }
@@ -36,4 +39,8 @@ struct EventListView: View {
     }
 }
 
-
+struct EventAddView: View {
+    var body: some View {
+        Text("EventAddView()")
+    }
+}
