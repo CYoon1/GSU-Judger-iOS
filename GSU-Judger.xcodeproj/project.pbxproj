@@ -85,6 +85,7 @@
 				D82982FD2ADEDD740055DE3C /* GSU_JudgerApp.swift */,
 				D82982FF2ADEDD740055DE3C /* ContentView.swift */,
 				D8EC4D172AE315D10083E05B /* DataManager.swift */,
+				D8EC4D1A2AE331380083E05B /* Model */,
 				D8EC4D192AE32CC70083E05B /* Login */,
 				D83C0EE22AE18F1F0031D598 /* Event */,
 				D83C0EE32AE18F290031D598 /* Project */,
@@ -125,6 +126,13 @@
 				D8D0C5022AE05F9700C192F9 /* UserRegisterView.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		D8EC4D1A2AE331380083E05B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
