@@ -11,14 +11,12 @@ struct ProjectListView: View {
     @EnvironmentObject var dataManager: DataManager
     @Environment(\.presentationMode) var presentation
     
-    @State var projects : [Project] = [
-        Project(projectName: "Project 1", description: "Description for Project 1"),
-        Project(projectName: "Project 2", description: "Description for Project 2"),
-        Project(projectName: "Project 3", description: "Description for Project 3")
-    ]
     var body: some View {
-        List(projects) { project in
+        List(dataManager.projects) { project in
             ProjectRowView(project: project)
+        }
+        .onAppear {
+            dataManager.fetchProjects()
         }
         .navigationTitle("Projects")
         .toolbar(content: {
@@ -28,14 +26,14 @@ struct ProjectListView: View {
                 }
             }
             
-//            ToolbarItem(placement: .bottomBar) {
-//                Button {
-//                    dataManager.fbSignOut()
-//                    presentation.wrappedValue.dismiss()
-//                } label: {
-//                    Text("Sign Out")
-//                }
-//            }
+            //            ToolbarItem(placement: .bottomBar) {
+            //                Button {
+            //                    dataManager.fbSignOut()
+            //                    presentation.wrappedValue.dismiss()
+            //                } label: {
+            //                    Text("Sign Out")
+            //                }
+            //            }
         })
     }
 }
@@ -72,20 +70,16 @@ struct ProjectAddView: View {
         Form {
             Section {
                 HStack {
-                    ZStack {
-                        Text("Name")
-                    }
+                    Text("Name")
                     TextField(text: $projectName) {
                         Text("Enter project name here")
                     }
                 }
-                
                 HStack {
                     TextField("Enter project description", text: $description,  axis: .vertical)
                         .lineLimit(5...10)
                 }
             }
-            
             Section {
                 Button {
                     print("Create new project")
@@ -93,7 +87,6 @@ struct ProjectAddView: View {
                 } label: {
                     Text("Create Project")
                 }
-                
             }
         }
         .navigationTitle("Create new project")

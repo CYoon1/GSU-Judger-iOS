@@ -12,7 +12,7 @@ class DataManager: ObservableObject {
     let db = Firestore.firestore()
     
     @Published var events: [Event] = []
-    
+    @Published var projects: [Project] = []
     
     func fbSignOut() {
         let firebaseAuth = Auth.auth()
@@ -25,6 +25,7 @@ class DataManager: ObservableObject {
     
     init() {
         fetchEvents()
+        fetchProjects()
     }
     func fetchEvents() {
         events.removeAll()
@@ -64,4 +65,39 @@ class DataManager: ObservableObject {
     func deleteEvent() {
         
     }
+    
+    func fetchProjects() {
+        projects.removeAll()
+        let ref = db.collection("Projects")
+        ref.getDocuments { snapshot, error in
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return
+            }
+            
+            if let snapshot = snapshot {
+                for document in snapshot.documents {
+                    let data = document.data()
+                    
+                    let id = data["id"] as? String ?? ""
+                    
+                    let name = data["name"] as? String ?? ""
+                    let description = data["description"] as? String ?? ""
+                    
+                    let project = Project(id: id, projectName: name, description: description)
+                    self.projects.append(project)
+                }
+            }
+        }
+    }
+    
+//    func addProject(project: Project) {
+//        let ref = db.collection("Projects").document(project.id)
+//        ref.setData(["eventName" : event.eventName, "id" : event.id, "location" : event.location, "eventDate" : Timestamp(date: event.eventDate)]) { error in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            }
+//        }
+//        fetchProjects() // Refresh View
+//    }
 }
