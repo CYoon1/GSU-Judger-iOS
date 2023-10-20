@@ -23,12 +23,16 @@ import Firebase
 @main
 struct GSU_JudgerApp: App {
 //    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var dataManager = DataManager()
     init() {
         FirebaseApp.configure()
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            NavigationStack{
+            EventListView()
+                .environmentObject(dataManager)}
         }
     }
 }

@@ -8,18 +8,15 @@
 import SwiftUI
 
 struct EventListView: View {
-    @State var events : [Event] = [
-        Event(eventName: "Event 1", location: "Atlanta", eventDate: Date()),
-        Event(eventName: "Event 2", location: "Atlanta", eventDate: Date()),
-        Event(eventName: "Event 3", location: "Atlanta", eventDate: Date()),
-    ]
+    @EnvironmentObject var dataManager: DataManager
+    
     var body: some View {
-        List(events) { event in
+        List(dataManager.events) { event in
             EventRowView(event: event)
         }
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink(destination: EventAddView()) {
+                NavigationLink(destination: EventAddView().environmentObject(dataManager)) {
                     Label("Open EventAddView()", systemImage: "plus")
                 }
             }
@@ -39,6 +36,7 @@ struct EventListView: View {
 #Preview {
     NavigationStack {
         EventListView()
+            .environmentObject(DataManager())
     }
 }
 struct Event: Identifiable, Codable {
@@ -59,6 +57,7 @@ struct EventRowView: View {
 
 struct EventAddView: View {
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var dataManager: DataManager
     
     @State var eventName: String = ""
     @State var location: String = ""
@@ -78,7 +77,7 @@ struct EventAddView: View {
                 }
                 HStack {
                     Text("Location")
-                    TextField(text: $eventName) {
+                    TextField(text: $location) {
                         Text("Enter event name here")
                     }
                 }
@@ -87,6 +86,8 @@ struct EventAddView: View {
             Section {
                 Button {
                     print("Create Event")
+                    let newEvent = Event(eventName: eventName, location: location, eventDate: eventDate)
+                    dataManager.addEvent(event: newEvent)
                     presentation.wrappedValue.dismiss()
                 } label: {
                     Text("Create Event")

@@ -9,14 +9,16 @@ import Foundation
 import Firebase
 
 class DataManager: ObservableObject {
+    let db = Firestore.firestore()
+    
     @Published var events: [Event] = []
+    
     
     init() {
         fetchEvents()
     }
     func fetchEvents() {
         events.removeAll()
-        let db = Firestore.firestore()
         let ref = db.collection("Events")
         ref.getDocuments { snapshot, error in
             guard error == nil else {
@@ -40,5 +42,17 @@ class DataManager: ObservableObject {
                 }
             }
         }
+    }
+    func addEvent(event: Event) {
+        let ref = db.collection("Events").document(event.id)
+        ref.setData(["eventName" : event.eventName, "id" : event.id, "location" : event.location, "eventDate" : Timestamp(date: event.eventDate)]) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        fetchEvents() // Refresh View
+    }
+    func deleteEvent() {
+        
     }
 }
