@@ -6,39 +6,41 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct LoginView: View {
     
-    @State var username: String = ""
-    @State var password: String = ""
+    @State private var email: String = ""
+    @State private var password: String = ""
     
     var body: some View {
         Form {
             Section {
                 HStack {
-                    Text("Username")
-                    TextField(text: $username) {
-                        Text("Enter username here")
+                    ZStack {
+                        Text("Password").hidden()
+                        Text("Email")
+                    }
+                    TextField(text: $email) {
+                        Text("Enter email here")
                     }
                 }
                 HStack {
-                    ZStack {
-                        Text("Username").hidden()
-                        Text("Password")
-                    }
+                    Text("Password")
                     SecureField(text: $password) {
                         Text("Enter password here")
                     }
                 }
                 Button {
-                    print("Attempting Register with Username: \(username), Password: \(password)")
+                    print("Attempting Log in with Email: \(email), Password: \(password)")
+                    login()
                 } label: {
                     Text("Login")
                 }
             }
             Section {
                 NavigationLink {
-                    UserAddView()
+                    UserRegisterView()
                 } label: {
                     Text("Create New User")
                 }
@@ -47,6 +49,14 @@ struct LoginView: View {
         }
         .navigationTitle("Login")
         
+    }
+    
+    func login() {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+        }
     }
 }
 

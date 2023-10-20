@@ -6,25 +6,26 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
-    @State var showLogin : Bool = true
+    @State var userIsLoggedIn : Bool = false
     
     var body: some View {
         NavigationStack {
             Group{
-                if showLogin {
-                    LoginView()
-                } else {
+                if userIsLoggedIn {
                     EventListView()
+                } else {
+                    LoginView()
                 }
             }
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     Button {
-                        showLogin.toggle()
+                        userIsLoggedIn.toggle()
                     } label: {
-                        if showLogin {
+                        if userIsLoggedIn {
                             Text("Debug Hide Login")
                         } else {
                             Text("Debug Show Login")
@@ -33,6 +34,13 @@ struct ContentView: View {
                 }
             }
             
+        }
+        .onAppear {
+            Auth.auth().addStateDidChangeListener { auth, user in
+                if user != nil {
+                    userIsLoggedIn.toggle()
+                }
+            }
         }
     }
 }
