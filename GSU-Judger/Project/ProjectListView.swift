@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ProjectListView: View {
-    @State var projects : [String] = ["1", "2", "3"]
+    @State var projects : [Project] = [
+        Project(projectName: "Project 1", description: "Description for Project 1"),
+        Project(projectName: "Project 2", description: "Description for Project 2"),
+        Project(projectName: "Project 3", description: "Description for Project 3")
+    ]
     var body: some View {
-        List {
-            ForEach(projects, id: \.self) { _ in
-                ProjectRowView()
-            }
+        List(projects) { project in
+            ProjectRowView(project: project)
         }
         .navigationTitle("Projects")
         .toolbar(content: {
@@ -43,9 +45,18 @@ struct ProjectListView: View {
     }
 }
 
+struct Project: Identifiable, Codable {
+    var id = UUID()
+    let projectName: String
+    let description: String
+}
+
 struct ProjectRowView: View {
+    let project: Project
     var body: some View {
-        Text("Test")
+        NavigationLink(destination: Text("Placeholder")){
+            Text("\(project.projectName)")
+        }
     }
 }
 
