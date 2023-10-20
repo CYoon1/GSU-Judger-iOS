@@ -20,13 +20,9 @@ struct ContentView: View {
                         .toolbar {
                             ToolbarItem(placement: .bottomBar) {
                                 Button {
-                                    fbSignOut()
+                                    dataManager.fbSignOut()
                                 } label: {
-                                    if userIsLoggedIn {
-                                        Text("Debug Hide Login")
-                                    } else {
-                                        Text("Debug Show Login")
-                                    }
+                                    Text("Sign Out")
                                 }
                             }
                         }
@@ -46,14 +42,6 @@ struct ContentView: View {
                     userIsLoggedIn = false
                 }
             }
-        }
-    }
-    func fbSignOut() {
-        let firebaseAuth = Auth.auth()
-        do {
-          try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-          print("Error signing out: %@", signOutError)
         }
     }
 }

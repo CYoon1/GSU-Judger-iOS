@@ -20,14 +20,6 @@ struct EventListView: View {
                     Label("Open EventAddView()", systemImage: "plus")
                 }
             }
-            // Temp Button
-            ToolbarItem(placement: .bottomBar) {
-                Button {
-                    print("Log Out")
-                } label: {
-                    Text("Log Out")
-                }
-            }
         })
         .navigationTitle("Event List")
     }
@@ -47,9 +39,10 @@ struct Event: Identifiable, Codable {
 }
 
 struct EventRowView: View {
+    @EnvironmentObject var dataManager: DataManager
     let event: Event
     var body: some View {
-        NavigationLink(destination: ProjectListView()) {
+        NavigationLink(destination: ProjectListView().environmentObject(dataManager)) {
             Text("\(event.eventName)")
         }
     }

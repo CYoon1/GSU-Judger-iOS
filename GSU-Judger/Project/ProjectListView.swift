@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ProjectListView: View {
+    @EnvironmentObject var dataManager: DataManager
+    @Environment(\.presentationMode) var presentation
+    
     @State var projects : [Project] = [
         Project(projectName: "Project 1", description: "Description for Project 1"),
         Project(projectName: "Project 2", description: "Description for Project 2"),
@@ -25,14 +28,14 @@ struct ProjectListView: View {
                 }
             }
             
-            // Temp Button
-            ToolbarItem(placement: .bottomBar) {
-                Button {
-                    print("Log Out")
-                } label: {
-                    Text("Log Out")
-                }
-            }
+//            ToolbarItem(placement: .bottomBar) {
+//                Button {
+//                    dataManager.fbSignOut()
+//                    presentation.wrappedValue.dismiss()
+//                } label: {
+//                    Text("Sign Out")
+//                }
+//            }
         })
     }
 }
@@ -40,13 +43,13 @@ struct ProjectListView: View {
 
 #Preview {
     NavigationStack {
-//        ProjectListView()
-        ProjectAddView()
+        ProjectListView()
+        //        ProjectAddView()
     }
 }
 
 struct Project: Identifiable, Codable {
-    var id = UUID()
+    var id = UUID().uuidString
     let projectName: String
     let description: String
 }
@@ -91,7 +94,7 @@ struct ProjectAddView: View {
                 } label: {
                     Text("Create Project")
                 }
-
+                
             }
         }
         .navigationTitle("Create new project")
