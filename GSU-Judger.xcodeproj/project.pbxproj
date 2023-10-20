@@ -84,9 +84,8 @@
 				D83C0ECD2AE187330031D598 /* GoogleService-Info.plist */,
 				D82982FD2ADEDD740055DE3C /* GSU_JudgerApp.swift */,
 				D82982FF2ADEDD740055DE3C /* ContentView.swift */,
-				D829830B2ADEE4350055DE3C /* LoginView.swift */,
-				D8D0C5022AE05F9700C192F9 /* UserRegisterView.swift */,
 				D8EC4D172AE315D10083E05B /* DataManager.swift */,
+				D8EC4D192AE32CC70083E05B /* Login */,
 				D83C0EE22AE18F1F0031D598 /* Event */,
 				D83C0EE32AE18F290031D598 /* Project */,
 				D82983012ADEDD750055DE3C /* Assets.xcassets */,
@@ -117,6 +116,15 @@
 				D8D0C4FE2AE05BCB00C192F9 /* ProjectListView.swift */,
 			);
 			path = Project;
+			sourceTree = "<group>";
+		};
+		D8EC4D192AE32CC70083E05B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D829830B2ADEE4350055DE3C /* LoginView.swift */,
+				D8D0C5022AE05F9700C192F9 /* UserRegisterView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

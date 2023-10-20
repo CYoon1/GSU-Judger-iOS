@@ -42,7 +42,6 @@ struct UserRegisterView: View {
                 }
                 .navigationTitle("Register New User")
             }
-        }
         
     }
     func register() {
