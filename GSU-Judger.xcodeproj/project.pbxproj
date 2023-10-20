@@ -26,6 +26,8 @@
 		D8D0C4FF2AE05BCB00C192F9 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D0C4FE2AE05BCB00C192F9 /* ProjectListView.swift */; };
 		D8D0C5032AE05F9700C192F9 /* UserRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D0C5022AE05F9700C192F9 /* UserRegisterView.swift */; };
 		D8EC4D182AE315D10083E05B /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC4D172AE315D10083E05B /* DataManager.swift */; };
+		D8EC4D1C2AE335AB0083E05B /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC4D1B2AE335AB0083E05B /* Project.swift */; };
+		D8EC4D1E2AE335C50083E05B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC4D1D2AE335C50083E05B /* Event.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		D8D0C4FE2AE05BCB00C192F9 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		D8D0C5022AE05F9700C192F9 /* UserRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterView.swift; sourceTree = "<group>"; };
 		D8EC4D172AE315D10083E05B /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		D8EC4D1B2AE335AB0083E05B /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		D8EC4D1D2AE335C50083E05B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,8 @@
 		D8EC4D1A2AE331380083E05B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D8EC4D1B2AE335AB0083E05B /* Project.swift */,
+				D8EC4D1D2AE335C50083E05B /* Event.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -221,12 +227,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8D0C5032AE05F9700C192F9 /* UserRegisterView.swift in Sources */,
+				D8EC4D1E2AE335C50083E05B /* Event.swift in Sources */,
 				D829830C2ADEE4350055DE3C /* LoginView.swift in Sources */,
 				D8D0C4FF2AE05BCB00C192F9 /* ProjectListView.swift in Sources */,
 				D8EC4D182AE315D10083E05B /* DataManager.swift in Sources */,
 				D82983002ADEDD740055DE3C /* ContentView.swift in Sources */,
 				D82982FE2ADEDD740055DE3C /* GSU_JudgerApp.swift in Sources */,
 				D8D0C4FD2AE05BC200C192F9 /* EventListView.swift in Sources */,
+				D8EC4D1C2AE335AB0083E05B /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

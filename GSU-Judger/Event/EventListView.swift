@@ -31,12 +31,6 @@ struct EventListView: View {
             .environmentObject(DataManager())
     }
 }
-struct Event: Identifiable, Codable {
-    var id = UUID().uuidString
-    let eventName: String
-    let location: String
-    let eventDate: Date
-}
 
 struct EventRowView: View {
     @EnvironmentObject var dataManager: DataManager

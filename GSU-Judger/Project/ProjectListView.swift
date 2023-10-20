@@ -45,12 +45,6 @@ struct ProjectListView: View {
     }
 }
 
-struct Project: Identifiable, Codable {
-    var id = UUID().uuidString
-    let projectName: String
-    let description: String
-}
-
 struct ProjectRowView: View {
     let project: Project
     var body: some View {
