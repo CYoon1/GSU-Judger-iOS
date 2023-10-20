@@ -15,9 +15,6 @@ struct ProjectListView: View {
         List(dataManager.projects) { project in
             ProjectRowView(project: project)
         }
-//        .onAppear {
-//            dataManager.fetchProjects()
-//        }
         .navigationTitle("Projects")
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {
@@ -38,13 +35,6 @@ struct ProjectListView: View {
     }
 }
 
-
-#Preview {
-    NavigationStack {
-        ProjectListView()
-    }
-}
-
 struct ProjectRowView: View {
     let project: Project
     var body: some View {
@@ -54,39 +44,9 @@ struct ProjectRowView: View {
     }
 }
 
-struct ProjectAddView: View {
-    @Environment(\.presentationMode) var presentation
-    @EnvironmentObject var dataManager: DataManager
-    
-    @State var projectName: String = ""
-    @State var description: String = ""
-    
-    var body: some View {
-        Form {
-            Section {
-                HStack {
-                    Text("Name")
-                    TextField(text: $projectName) {
-                        Text("Enter project name here")
-                    }
-                }
-                HStack {
-                    TextField("Enter project description", text: $description,  axis: .vertical)
-                        .lineLimit(5...10)
-                }
-            }
-            Section {
-                Button {
-                    print("Create new project")
-                    let newProject = Project(projectName: projectName, description: description)
-                    dataManager.addProject(project: newProject)
-                    presentation.wrappedValue.dismiss()
-                } label: {
-                    Text("Create Project")
-                }
-            }
-        }
-        .navigationTitle("Create new project")
+#Preview {
+    NavigationStack {
+        ProjectListView()
+            .environmentObject(DataManager())
     }
 }
-
