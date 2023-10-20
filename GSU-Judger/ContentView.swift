@@ -10,37 +10,50 @@ import Firebase
 
 struct ContentView: View {
     @State var userIsLoggedIn : Bool = false
+    @EnvironmentObject var dataManager: DataManager
     
     var body: some View {
         NavigationStack {
             Group{
                 if userIsLoggedIn {
                     EventListView()
+                        .toolbar {
+                            ToolbarItem(placement: .bottomBar) {
+                                Button {
+                                    fbSignOut()
+                                } label: {
+                                    if userIsLoggedIn {
+                                        Text("Debug Hide Login")
+                                    } else {
+                                        Text("Debug Show Login")
+                                    }
+                                }
+                            }
+                        }
+                        .environmentObject(dataManager)
                 } else {
                     LoginView()
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .bottomBar) {
-                    Button {
-                        userIsLoggedIn.toggle()
-                    } label: {
-                        if userIsLoggedIn {
-                            Text("Debug Hide Login")
-                        } else {
-                            Text("Debug Show Login")
-                        }
-                    }
-                }
-            }
+            
             
         }
         .onAppear {
             Auth.auth().addStateDidChangeListener { auth, user in
                 if user != nil {
-                    userIsLoggedIn.toggle()
+                    userIsLoggedIn = true
+                } else {
+                    userIsLoggedIn = false
                 }
             }
+        }
+    }
+    func fbSignOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+          try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+          print("Error signing out: %@", signOutError)
         }
     }
 }
