@@ -99,4 +99,5 @@ class DataManager: ObservableObject {
         }
         fetchProjects() // Refresh View
     }
+    func deleteProject() {  }
 }
