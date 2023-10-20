@@ -15,13 +15,13 @@ struct ProjectListView: View {
         List(dataManager.projects) { project in
             ProjectRowView(project: project)
         }
-        .onAppear {
-            dataManager.fetchProjects()
-        }
+//        .onAppear {
+//            dataManager.fetchProjects()
+//        }
         .navigationTitle("Projects")
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {
-                NavigationLink(destination: ProjectAddView()) {
+                NavigationLink(destination: ProjectAddView().environmentObject(dataManager)) {
                     Label("Open ProjectAddView()", systemImage: "plus")
                 }
             }
@@ -62,6 +62,7 @@ struct ProjectRowView: View {
 
 struct ProjectAddView: View {
     @Environment(\.presentationMode) var presentation
+    @EnvironmentObject var dataManager: DataManager
     
     @State var projectName: String = ""
     @State var description: String = ""
@@ -83,6 +84,8 @@ struct ProjectAddView: View {
             Section {
                 Button {
                     print("Create new project")
+                    let newProject = Project(projectName: projectName, description: description)
+                    dataManager.addProject(project: newProject)
                     presentation.wrappedValue.dismiss()
                 } label: {
                     Text("Create Project")

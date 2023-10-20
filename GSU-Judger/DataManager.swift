@@ -91,13 +91,13 @@ class DataManager: ObservableObject {
         }
     }
     
-//    func addProject(project: Project) {
-//        let ref = db.collection("Projects").document(project.id)
-//        ref.setData(["eventName" : event.eventName, "id" : event.id, "location" : event.location, "eventDate" : Timestamp(date: event.eventDate)]) { error in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            }
-//        }
-//        fetchProjects() // Refresh View
-//    }
+    func addProject(project: Project) {
+        let ref = db.collection("Projects").document(project.id)
+        ref.setData(["name" : project.projectName, "id" : project.id, "description" : project.description]) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        fetchProjects() // Refresh View
+    }
 }
