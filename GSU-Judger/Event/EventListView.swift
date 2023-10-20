@@ -42,7 +42,7 @@ struct EventListView: View {
     }
 }
 struct Event: Identifiable, Codable {
-    var id = UUID()
+    var id = UUID().uuidString
     let eventName: String
     let location: String
     let eventDate: Date
