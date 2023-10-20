@@ -15,13 +15,6 @@ struct UserRegisterView: View {
     @State var password: String = ""
     
     var body: some View {
-        VStack{
-            Button {
-                print("Test")
-            } label: {
-                Text("Test")
-            }
-
             Form{
                 Section {
                     HStack {
