@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Project: Identifiable, Codable {
+struct Project: Identifiable, Codable, Hashable {
     var id = UUID().uuidString
     let projectName: String
     let description: String

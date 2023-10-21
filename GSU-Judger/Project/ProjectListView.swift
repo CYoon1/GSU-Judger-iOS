@@ -12,8 +12,12 @@ struct ProjectListView: View {
     @Environment(\.presentationMode) var presentation
     
     var body: some View {
-        List(dataManager.projects) { project in
-            ProjectRowView(project: project)
+        List{
+            ForEach(dataManager.projects, id: \.self) { project in
+                ProjectRowView(project: project)
+            }.onDelete { (indexSet) in
+                dataManager.deleteProject()
+            }
         }
         .navigationTitle("Projects")
         .toolbar(content: {

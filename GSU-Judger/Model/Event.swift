@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Event: Identifiable, Codable {
+struct Event: Identifiable, Codable, Hashable {
     var id = UUID().uuidString
     let eventName: String
     let location: String
