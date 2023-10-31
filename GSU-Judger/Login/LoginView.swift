@@ -23,13 +23,13 @@ struct LoginView: View {
                     }
                     TextField(text: $email) {
                         Text("Enter email here")
-                    }
+                    }.textInputAutocapitalization(.never)
                 }
                 HStack {
                     Text("Password")
                     SecureField(text: $password) {
                         Text("Enter password here")
-                    }
+                    }.textInputAutocapitalization(.never)
                 }
                 Button {
                     print("Attempting Log in with Email: \(email), Password: \(password)")

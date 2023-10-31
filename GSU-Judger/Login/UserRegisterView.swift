@@ -24,13 +24,13 @@ struct UserRegisterView: View {
                         }
                         TextField(text: $email) {
                             Text("Enter email here")
-                        }
+                        }.textInputAutocapitalization(.never)
                     }
                     HStack {
                         Text("Password")
                         SecureField(text: $password) {
                             Text("Enter password here")
-                        }
+                        }.textInputAutocapitalization(.never)
                         //                        .textFieldStyle(.roundedBorder)
                     }
                     Button {
