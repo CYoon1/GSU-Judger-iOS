@@ -13,6 +13,9 @@ class DataManager: ObservableObject {
     
     @Published var events: [Event] = []
     @Published var projects: [Project] = []
+    @Published var ratings: [Rating] = []
+    
+    @Published var currentUser: User = User(userID: "", email: "")
     
     func fbSignOut() {
         let firebaseAuth = Auth.auth()
@@ -26,6 +29,7 @@ class DataManager: ObservableObject {
     init() {
         fetchEvents()
         fetchProjects()
+        fetchRatings()
     }
     func fetchEvents() {
         events.removeAll()
@@ -83,8 +87,9 @@ class DataManager: ObservableObject {
                     
                     let name = data["name"] as? String ?? ""
                     let description = data["description"] as? String ?? ""
+                    let eventID = data["eventID"] as? String ?? ""
                     
-                    let project = Project(id: id, projectName: name, description: description)
+                    let project = Project(id: id, projectName: name, userName: "", description: description, eventID: eventID)
                     self.projects.append(project)
                 }
             }
@@ -92,7 +97,7 @@ class DataManager: ObservableObject {
     }
     func addProject(project: Project) {
         let ref = db.collection("Projects").document(project.id)
-        ref.setData(["name" : project.projectName, "id" : project.id, "description" : project.description]) { error in
+        ref.setData(["name" : project.projectName, "id" : project.id, "description" : project.description, "eventID" : project.eventID]) { error in
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -100,4 +105,37 @@ class DataManager: ObservableObject {
         fetchProjects() // Refresh View
     }
     func deleteProject() {  }
+    
+    func fetchRatings(){
+            ratings.removeAll()
+            let ref = db.collection("Ratings")
+            ref.getDocuments { snapshot, error in
+                guard error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                if let snapshot = snapshot {
+                    for document in snapshot.documents {
+                        let data = document.data()
+                        
+                        let id = data["id"] as? String ?? ""
+                        
+                        let stars = data["stars"] as? Int ?? 0
+                        let userID = data["userID"] as? String ?? ""
+                        let projID = data["projID"] as? String ?? ""
+                        
+                        let rating = Rating(id: id, stars: stars, userID: userID, projID: projID)
+                        self.ratings.append(rating)
+                    }
+                }
+            }
+    }
+    func addRating(rating: Rating) {let ref = db.collection("Ratings").document(rating.id)
+        ref.setData(["projID" : rating.projID, "id" : rating.id, "userID" : rating.userID, "stars" : rating.stars]) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
 }

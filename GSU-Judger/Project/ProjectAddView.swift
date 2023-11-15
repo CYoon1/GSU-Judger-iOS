@@ -10,17 +10,26 @@ import SwiftUI
 struct ProjectAddView: View {
     @Environment(\.presentationMode) var presentation
     @EnvironmentObject var dataManager: DataManager
+    let eventID: String
     
     @State var projectName: String = ""
+    @State var userName: String = ""
     @State var description: String = ""
     
     var body: some View {
         Form {
             Section {
                 HStack {
-                    Text("Name")
+                    Text("Project Name")
                     TextField(text: $projectName) {
                         Text("Enter project name here")
+                    }
+                }
+                
+                HStack {
+                    Text("Your Name")
+                    TextField(text: $userName) {
+                        Text("Enter submitter name here")
                     }
                 }
                 HStack {
@@ -31,7 +40,7 @@ struct ProjectAddView: View {
             Section {
                 Button {
                     print("Create new project")
-                    let newProject = Project(projectName: projectName, description: description)
+                    let newProject = Project(projectName: projectName, userName: "", description: description, eventID: eventID)
                     dataManager.addProject(project: newProject)
                     presentation.wrappedValue.dismiss()
                 } label: {
@@ -45,7 +54,7 @@ struct ProjectAddView: View {
 
 #Preview {
     NavigationStack {
-        ProjectAddView()
+        ProjectAddView(eventID: "Test")
             .environmentObject(DataManager())
     }
 }

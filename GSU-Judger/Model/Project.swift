@@ -10,5 +10,9 @@ import Foundation
 struct Project: Identifiable, Codable, Hashable {
     var id = UUID().uuidString
     let projectName: String
+    let userName: String
     let description: String
+    
+//    let userID: String
+    let eventID: String
 }

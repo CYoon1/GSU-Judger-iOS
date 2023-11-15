@@ -29,7 +29,7 @@ struct EventRowView: View {
     @EnvironmentObject var dataManager: DataManager
     let event: Event
     var body: some View {
-        NavigationLink(destination: ProjectListView().environmentObject(dataManager)) {
+        NavigationLink(destination: ProjectListView(eventID: event.id).environmentObject(dataManager)) {
             Text("\(event.eventName)")
         }
     }
