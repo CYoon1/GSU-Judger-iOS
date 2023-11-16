@@ -24,6 +24,7 @@
 		D83C0EE12AE1889B0031D598 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = D83C0EE02AE1889B0031D598 /* FirebaseStorageCombine-Community */; };
 		D88AF3412B056B8000605ADA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88AF3402B056B8000605ADA /* User.swift */; };
 		D88AF3432B056BBC00605ADA /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88AF3422B056BBC00605ADA /* Rating.swift */; };
+		D88AF34F2B05F26800605ADA /* GSU_JudgerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D88AF34E2B05F26800605ADA /* GSU_JudgerTests.swift */; };
 		D8D0C4FD2AE05BC200C192F9 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D0C4FC2AE05BC200C192F9 /* EventListView.swift */; };
 		D8D0C4FF2AE05BCB00C192F9 /* ProjectListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D0C4FE2AE05BCB00C192F9 /* ProjectListView.swift */; };
 		D8D0C5032AE05F9700C192F9 /* UserRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8D0C5022AE05F9700C192F9 /* UserRegisterView.swift */; };
@@ -33,6 +34,16 @@
 		D8EC4D202AE336BD0083E05B /* ProjectAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC4D1F2AE336BD0083E05B /* ProjectAddView.swift */; };
 		D8EC4D222AE336D90083E05B /* EventAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8EC4D212AE336D90083E05B /* EventAddView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D88AF3502B05F26800605ADA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D82982F22ADEDD740055DE3C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D82982F92ADEDD740055DE3C;
+			remoteInfo = "GSU-Judger";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		D82982FA2ADEDD740055DE3C /* GSU-Judger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GSU-Judger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +55,8 @@
 		D83C0ECD2AE187330031D598 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D88AF3402B056B8000605ADA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D88AF3422B056BBC00605ADA /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		D88AF34C2B05F26800605ADA /* GSU-JudgerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GSU-JudgerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D88AF34E2B05F26800605ADA /* GSU_JudgerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSU_JudgerTests.swift; sourceTree = "<group>"; };
 		D8D0C4FC2AE05BC200C192F9 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		D8D0C4FE2AE05BCB00C192F9 /* ProjectListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectListView.swift; sourceTree = "<group>"; };
 		D8D0C5022AE05F9700C192F9 /* UserRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegisterView.swift; sourceTree = "<group>"; };
@@ -71,6 +84,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D88AF3492B05F26800605ADA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				D82982FC2ADEDD740055DE3C /* GSU-Judger */,
+				D88AF34D2B05F26800605ADA /* GSU-JudgerTests */,
 				D82982FB2ADEDD740055DE3C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				D82982FA2ADEDD740055DE3C /* GSU-Judger.app */,
+				D88AF34C2B05F26800605ADA /* GSU-JudgerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,6 +153,14 @@
 				D8EC4D1F2AE336BD0083E05B /* ProjectAddView.swift */,
 			);
 			path = Project;
+			sourceTree = "<group>";
+		};
+		D88AF34D2B05F26800605ADA /* GSU-JudgerTests */ = {
+			isa = PBXGroup;
+			children = (
+				D88AF34E2B05F26800605ADA /* GSU_JudgerTests.swift */,
+			);
+			path = "GSU-JudgerTests";
 			sourceTree = "<group>";
 		};
 		D8EC4D192AE32CC70083E05B /* Login */ = {
@@ -184,6 +214,24 @@
 			productReference = D82982FA2ADEDD740055DE3C /* GSU-Judger.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D88AF34B2B05F26800605ADA /* GSU-JudgerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D88AF3522B05F26800605ADA /* Build configuration list for PBXNativeTarget "GSU-JudgerTests" */;
+			buildPhases = (
+				D88AF3482B05F26800605ADA /* Sources */,
+				D88AF3492B05F26800605ADA /* Frameworks */,
+				D88AF34A2B05F26800605ADA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D88AF3512B05F26800605ADA /* PBXTargetDependency */,
+			);
+			name = "GSU-JudgerTests";
+			productName = "GSU-JudgerTests";
+			productReference = D88AF34C2B05F26800605ADA /* GSU-JudgerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -196,6 +244,10 @@
 				TargetAttributes = {
 					D82982F92ADEDD740055DE3C = {
 						CreatedOnToolsVersion = 15.0;
+					};
+					D88AF34B2B05F26800605ADA = {
+						CreatedOnToolsVersion = 15.0.1;
+						TestTargetID = D82982F92ADEDD740055DE3C;
 					};
 				};
 			};
@@ -216,6 +268,7 @@
 			projectRoot = "";
 			targets = (
 				D82982F92ADEDD740055DE3C /* GSU-Judger */,
+				D88AF34B2B05F26800605ADA /* GSU-JudgerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -228,6 +281,13 @@
 				D82983052ADEDD750055DE3C /* Preview Assets.xcassets in Resources */,
 				D82983022ADEDD750055DE3C /* Assets.xcassets in Resources */,
 				D83C0ECE2AE187330031D598 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D88AF34A2B05F26800605ADA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +314,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D88AF3482B05F26800605ADA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D88AF34F2B05F26800605ADA /* GSU_JudgerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D88AF3512B05F26800605ADA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D82982F92ADEDD740055DE3C /* GSU-Judger */;
+			targetProxy = D88AF3502B05F26800605ADA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D82983062ADEDD750055DE3C /* Debug */ = {
@@ -438,6 +514,42 @@
 			};
 			name = Release;
 		};
+		D88AF3532B05F26800605ADA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2C89D7FYA2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Yoon.Chris.GSU-JudgerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GSU-Judger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GSU-Judger";
+			};
+			name = Debug;
+		};
+		D88AF3542B05F26800605ADA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2C89D7FYA2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Yoon.Chris.GSU-JudgerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GSU-Judger.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/GSU-Judger";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -455,6 +567,15 @@
 			buildConfigurations = (
 				D82983092ADEDD750055DE3C /* Debug */,
 				D829830A2ADEDD750055DE3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D88AF3522B05F26800605ADA /* Build configuration list for PBXNativeTarget "GSU-JudgerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D88AF3532B05F26800605ADA /* Debug */,
+				D88AF3542B05F26800605ADA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
