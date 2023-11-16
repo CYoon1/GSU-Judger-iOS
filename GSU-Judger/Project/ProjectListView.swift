@@ -15,7 +15,7 @@ struct ProjectListView: View {
     var body: some View {
         List{
             ForEach(dataManager.projects.filter({ $0.eventID == eventID }), id: \.self) { project in
-                ProjectRowView(project: project)
+                ProjectRowView(project: project).environmentObject(dataManager)
             }.onDelete { (indexSet) in
                 dataManager.deleteProject()
             }
@@ -32,21 +32,69 @@ struct ProjectListView: View {
 }
 
 struct ProjectRowView: View {
+    @EnvironmentObject var dataManager: DataManager
     let project: Project
+    
     var body: some View {
-        NavigationLink(destination: ProjectView(project: project)){
+        NavigationLink(destination: ProjectView(project: project).environmentObject(dataManager)){
             Text("\(project.projectName)")
         }
     }
 }
 
 struct ProjectView: View {
+    @EnvironmentObject var dataManager: DataManager
     let project: Project
+    
     var body: some View {
-        VStack {
-            Text(project.projectName)
+        Form {
+            Section("Name") {
+                Text(project.userName)
+            }
+            Section("Description") {
+                Text(project.description)
+            }
+            Section("Rating") {
+                NavigationLink(destination: Text("RatingView")) {
+                    RatingRowView(projectID: project.id).environmentObject(dataManager)
+                }
+            }
             
-            Text(project.description)
+        }.navigationTitle(project.projectName)
+    }
+}
+
+struct RatingRowView: View {
+    @EnvironmentObject var dataManager: DataManager
+    var averageRating: Double = 0
+    let projectID: String
+    
+    
+    @State var rating = 1
+    var label = ""
+    var maximumRating = 5
+    var offImage: Image?
+    var onImage = Image(systemName: "star.fill")
+    
+    var offColor = Color.gray
+    var onColor = Color.yellow
+    
+    func image(for number: Int) -> Image {
+        if number > rating {
+            return offImage ?? onImage
+        } else {
+            return onImage
+        }
+    }
+    var body: some View {
+        HStack {
+            if label.isEmpty == false {
+                Text(label)
+            }
+            ForEach(1..<maximumRating + 1, id: \.self) { number in
+                image(for: number)
+                    .foregroundColor(number > rating ? offColor : onColor)
+            }
         }
     }
 }
