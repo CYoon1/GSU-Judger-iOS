@@ -55,7 +55,7 @@ struct ProjectView: View {
                 Text(project.description)
             }
             Section("Rating") {
-                NavigationLink(destination: Text("RatingView")) {
+                NavigationLink(destination: RatingAddView(projectID: project.id)) {
                     RatingRowView(projectID: project.id).environmentObject(dataManager)
                 }
             }
@@ -95,8 +95,60 @@ struct RatingRowView: View {
                 image(for: number)
                     .foregroundColor(number > rating ? offColor : onColor)
             }
+        }.onAppear{ rating = dataManager.getAverageRatingByProjID(id: projectID) }
+    }
+}
+
+struct RatingAddView: View {
+    @EnvironmentObject var dataManager: DataManager
+    @Environment(\.presentationMode) var presentation
+    var averageRating: Double = 0
+    let projectID: String
+    
+    
+    @State var rating = 1
+    var label = ""
+    var maximumRating = 5
+    var offImage: Image?
+    var onImage = Image(systemName: "star.fill")
+    
+    var offColor = Color.gray
+    var onColor = Color.yellow
+    func image(for number: Int) -> Image {
+        if number > rating {
+            return offImage ?? onImage
+        } else {
+            return onImage
         }
     }
+    
+    var body: some View {
+        Form {
+            HStack {
+                if label.isEmpty == false {
+                    Text(label)
+                }
+                ForEach(1..<maximumRating + 1, id: \.self) { number in
+                    image(for: number)
+                        .foregroundColor(number > rating ? offColor : onColor)
+                        .onTapGesture {
+                            rating = number
+                        }
+                }
+            }
+            Button {
+                let newRating = Rating(stars: rating, userID: "", projID: projectID)
+                dataManager.addRating(rating: newRating)
+                presentation.wrappedValue.dismiss()
+            } label: {
+                Text("Confirm Rating")
+            }
+
+        }
+        
+    }
+    
+    
 }
 
 #Preview {

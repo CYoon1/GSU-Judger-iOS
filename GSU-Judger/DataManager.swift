@@ -104,6 +104,9 @@ class DataManager: ObservableObject {
         }
         fetchProjects() // Refresh View
     }
+    func editProject() {
+        
+    }
     func deleteProject() {  }
     
     func fetchRatings(){
@@ -130,12 +133,27 @@ class DataManager: ObservableObject {
                 }
             }
     }
+    func getAverageRatingByProjID(id: String) -> Int {
+        let projectRatings = ratings.filter({ $0.projID == id })
+        let projectRatingsCount = projectRatings.count
+        if (projectRatingsCount > 0) {
+            var ratingStars : [Int] = []
+            for rating in projectRatings {
+                ratingStars.append(rating.stars)
+            }
+            let totalRating = ratingStars.reduce(0, +)
+            return (totalRating / projectRatingsCount)
+        } else {
+            return Int(0)
+        }
+        
+    }
     func addRating(rating: Rating) {let ref = db.collection("Ratings").document(rating.id)
         ref.setData(["projID" : rating.projID, "id" : rating.id, "userID" : rating.userID, "stars" : rating.stars]) { error in
             if let error = error {
                 print(error.localizedDescription)
             }
         }
-        
+        fetchRatings()
     }
 }
